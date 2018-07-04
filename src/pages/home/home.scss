@@ -1,3 +1,27 @@
-page-home {
+page-home {}
 
+.main {}
+
+.myradios {
+    background-color: burlywood;
+    ion-header {
+        background-color: violet;
+    }
+}
+
+ion-input {
+    background-color: antiquewhite;
+}
+
+button {
+    background-color: aqua;
+}
+
+.tnf {
+    .fButtons {
+        background-color: red;
+    }
+    button {
+        background-color: green;
+    }
 }

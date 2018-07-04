@@ -1,14 +1,219 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            Quiz App
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="main">
+    <div class="myradios">
+        <ion-list radio-group>
+            <ion-item>
+                <ion-header>
+                    SELET A CATEGORY
+                </ion-header>
+            </ion-item>
+            <ion-item>
+                <ion-label>Football</ion-label>
+                <ion-radio (click)="category('f')"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>South African History</ion-label>
+                <ion-radio value="sa" (click)="category('sa')"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>General Questions</ion-label>
+                <ion-radio (click)="category('g')">World History </ion-radio>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <div class="football" *ngIf="showFootballComp">
+        <div class="q1">
+
+            <h2>
+                What national team does Mesut Ozil play for?
+            </h2>
+            <ion-input type="text" placeholder="enter your answer" [(ngModel)]="f_q1"></ion-input>
+
+        </div>
+        <div class="q2">
+            <h2>
+                Who was the PSL’s Coach of the Season during the 2002/03 season?
+            </h2>
+            <ion-input type="text" placeholder="enter your answer" [(ngModel)]="f_q2"></ion-input>
+
+
+        </div>
+        <div class="q3">
+            <h2>
+                With which club did Diego Maradona last play for a European team?
+            </h2>
+            <ion-input type="text" placeholder="enter your answer" [(ngModel)]="f_q3"></ion-input>
+
+        </div>
+        <div class="q4">
+            <h2>
+                There have been 108 individual English managers in the league. Which nation is in second place with 56?
+            </h2>
+            <ion-input type="text" placeholder="enter your answer" [(ngModel)]="f_q4"></ion-input>
+
+        </div>
+        <div class="q5">
+            <h2>
+                Who announced his retirement from football on Valentine’s Day 2011?
+            </h2>
+            <ion-input type="text" placeholder="enter your answer" [(ngModel)]="f_q5"></ion-input>
+
+        </div>
+        <button ion-button small (click)="checkAnswer()">submit</button> {{ft_score}}
+    </div>
+    <div class="tnf" *ngIf="showSAComp">
+        <div class="tnf_q1">
+            <h2>
+                South Africa has three capital cities.
+            </h2>
+            <button ion-button small (click)="checktnf( 'q1t')">True </button>
+
+            <button class="fButtons" ion-button small (click)="checktnf('q1f')">False</button>
+
+        </div>
+        <div class="tnf_q2">
+            <h2>
+                In the 17th and 18th centuries there was much fighting between black tribes and Dutch settlers.
+            </h2>
+            <button ion-button small (click)="checktnf('q2t')">True</button>
+            <button class="fButtons" ion-button small (click)="checktnf('q2f')">False</button>
+
+        </div>
+        <div class="tnf_q3">
+            <h2>
+                South Africa is the world's biggest gold producer
+            </h2>
+            <button ion-button small (click)="checktnf('q3t')">True</button>
+            <button class="fButtons" ion-button small (click)="checktnf('q3f')">False</button>
+
+        </div>
+        <div class="tnf_q4">
+            <h2>
+                The southern part of the country is sparsely populated because it is too dry.
+            </h2>
+            <button ion-button small (click)="checktnf('q4t')">True</button>
+            <button class="fButtons" ion-button small (click)="checktnf('q4f')">False</button>
+
+        </div>
+        <div class="tnf_q5">
+            <h2>
+                Johannesburg was founded as the first diamond-mining town.
+            </h2>
+            <button ion-button small (click)="checktnf('q5t')">True</button>
+            <button class="fButtons" ion-button small (click)="checktnf('q5f')">False</button>
+
+        </div>
+    </div>
+    <div class="general" *ngIf="snowGeneralComp">
+
+        <div>
+            <h2>
+                1. According to the census held in South Africa in 2001 what percentage of South Africa's 47 million population resides in KwaZulu Natal?
+            </h2>
+            <ion-list radio-group>
+                <ion-item>
+                    <ion-label>11%</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>20%</ion-label>
+                    <ion-radio (click)="checkgeneral('a')"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>15%</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>25%</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div>
+            <h2>
+                2. What is South Africa's largest airport?
+            </h2>
+            <ion-list radio-group>
+                <ion-item>
+                    <ion-radio></ion-radio>
+                    <ion-label>Mandela International Airport</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Johannesburg International Airport</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>OR Tambo International Airport</ion-label>
+                    <ion-radio (click)="checkgeneral('b')"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Mkambati International Airport</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div>
+            <h2>
+                3. When did South Africa become a Republic?
+            </h2>
+            <ion-list radio-group>
+                <ion-item>
+                    <ion-radio></ion-radio>
+                    <ion-label>1976</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label>1964</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>1994</ion-label>
+                    <ion-radio (click)="checkgeneral('c')"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>1956</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div>
+            <h2>
+                4.What is the nickname of Kiernan Forbes?
+            </h2>
+            <ion-input type="text" placeholder="enter your answer" (ngModel)="checkgeneral('AKA')"></ion-input>
+
+        </div>
+        <div>
+            <h2>
+                5. Do the colours on the South African flag have any official meaning?
+            </h2>
+            <ion-list radio-group>
+                <ion-item>
+                    <ion-label (click)="checkAnswer('d')">Yes</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>No</ion-label>
+                    <ion-radio></ion-radio>
+                </ion-item>
+
+            </ion-list>
+            {{generalScore}}
+            <button ion-button block (click)="checkGeneralText()">submit</button>
+            <div *ngIf="showFinalScore ">
+                <h2>Your Final Score :{{finalScore}} \ 15 </h2>
+            </div>
+        </div>
+
+
+    </div>
+
+
 </ion-content>
